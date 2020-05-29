@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CompleteAspnetCore31.Contracts;
 using CompleteAspnetCore31.Repository;
+using AutoMapper;
+using CompleteAspnetCore31.Mappings;
 
 namespace CompleteAspnetCore31
 {
@@ -37,6 +39,8 @@ namespace CompleteAspnetCore31
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
             services.AddScoped<ILeaveHistoryRepository, LeaveHistoryRepository>();
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+
+            services.AddAutoMapper(typeof(Maps));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
